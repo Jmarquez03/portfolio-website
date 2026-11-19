@@ -44,22 +44,21 @@ export default function PointCloudLab() {
             <PointCloud mode="lab" stage={stage} />
           </Suspense>
         </GLBoundary>
-        <div className="pointer-events-none absolute left-4 top-4 rounded-md border border-line bg-bg/70 px-3 py-2 font-mono text-xs backdrop-blur">
+        <div className="material pointer-events-none absolute left-4 top-4 rounded-md border border-line bg-bg/70 px-3 py-2 font-mono text-xs backdrop-blur">
           <span className="text-muted">points </span>
-          <span className="text-ink">{visible.toLocaleString()}</span>
+          <span className="num text-ink">{visible.toLocaleString()}</span>
           {stage > 0 && <span className="text-accent"> −{Math.round((1 - counts.filtered / counts.raw) * 100)}%</span>}
         </div>
       </div>
       <div className="flex flex-col gap-4 border-t border-line p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-        <div role="radiogroup" aria-label="Processing stage" className="flex rounded-full border border-line p-1">
+        <div role="group" aria-label="Processing stage" className="flex rounded-full border border-line p-1">
           {STAGES.map((s) => (
             <button
               key={s.id}
               type="button"
-              role="radio"
-              aria-checked={stage === s.id}
+              aria-pressed={stage === s.id}
               onClick={() => setStage(s.id)}
-              className={`min-h-10 flex-1 rounded-full px-3 text-sm transition-colors sm:flex-none sm:px-4 ${
+              className={`min-h-10 flex-1 rounded-full px-3 text-sm transition-[color,background-color,transform] duration-150 active:scale-[0.97] sm:flex-none sm:px-4 ${
                 stage === s.id ? 'bg-accent text-bg' : 'text-muted hover:text-ink'
               }`}
             >

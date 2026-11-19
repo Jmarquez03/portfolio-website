@@ -22,21 +22,24 @@ export default function Experience() {
             <li key={r.slug} className="border-b border-line">
               <Link
                 to={`/work/${r.slug}`}
-                className="group grid gap-x-8 gap-y-4 py-8 transition-colors md:grid-cols-12 md:items-center md:py-10"
+                className="group relative grid gap-x-8 gap-y-4 py-8 md:grid-cols-12 md:items-center md:py-10"
               >
                 <div className="md:col-span-4">
-                  <p className="font-mono text-xs text-muted">{r.dates}</p>
+                  <p className="num font-mono text-xs text-muted">{r.dates}</p>
                   <h3 className="mt-2 text-2xl font-semibold tracking-tight">
                     {r.company}
-                    <span className="ml-2 inline-block text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" aria-hidden>
+                    <span
+                      className="ml-2 inline-block text-muted transition-[transform,color] duration-200 ease-out group-hover:translate-x-1 group-hover:text-accent group-focus-visible:text-accent"
+                      aria-hidden
+                    >
                       →
                     </span>
                   </h3>
                   <p className="mt-1 text-muted">{r.title}</p>
                 </div>
-                <p className="leading-relaxed text-ink/85 md:col-span-5">{r.summary}</p>
+                <p className="leading-relaxed text-ink/80 transition-colors group-hover:text-ink md:col-span-5">{r.summary}</p>
                 <div className="md:col-span-3 md:text-right">
-                  <p className="text-4xl font-semibold tracking-[-0.03em] text-accent">{r.metric.value}</p>
+                  <p className="num text-4xl font-semibold tracking-[-0.03em] text-accent">{r.metric.value}</p>
                   <p className="mt-1 text-sm text-muted">{r.metric.label}</p>
                 </div>
               </Link>

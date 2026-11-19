@@ -23,12 +23,16 @@ export default function Nav() {
   }, [])
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? 'border-b border-line bg-bg/85 backdrop-blur-md' : 'border-b border-transparent'
+        scrolled || open ? 'material border-b border-line/70 bg-bg/75 backdrop-blur-xl backdrop-saturate-150' : 'border-b border-transparent'
       }`}
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-md focus:bg-accent focus:px-3 focus:py-2 focus:text-bg">
@@ -37,7 +41,7 @@ export default function Nav() {
       <nav className="wrap flex h-16 items-center justify-between" aria-label="Main">
         <Link to="/" className="flex min-h-11 items-center gap-2.5 font-semibold tracking-tight">
           <span className="grid size-7 place-items-center rounded-md bg-accent font-mono text-xs font-medium text-bg">JM</span>
-          {profile.name}
+          <span translate="no">{profile.name}</span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
@@ -49,7 +53,8 @@ export default function Nav() {
             </li>
           ))}
           <li className="ml-3">
-            <a href={profile.resume} target="_blank" rel="noreferrer" className="btn btn-ghost !min-h-9 !px-4 text-sm">
+            <a href={profile.resume} target="_blank" rel="noreferrer" className="btn btn-ghost !min-h-9 !px-4 text-sm"
+              aria-label="Resume (PDF, opens in a new tab)">
               Resume
             </a>
           </li>
@@ -71,7 +76,7 @@ export default function Nav() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="h-[calc(100svh-4rem)] bg-bg md:hidden">
+        <div id="mobile-menu" className="h-[calc(100svh-4rem)] overscroll-contain bg-bg md:hidden">
           <ul className="wrap flex flex-col gap-1 pt-6">
             {links.map((l) => (
               <li key={l.href}>

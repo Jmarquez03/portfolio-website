@@ -5,6 +5,7 @@
   --color-surface: #141418;
   --color-surface-2: #1b1b21;
   --color-line: #26262e;
+  --color-line-strong: #3a3a44;
   --color-ink: #ededf0;
   --color-muted: #9b9ba6;
   --color-accent: #ff6b1a;
@@ -26,7 +27,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
   }
+  a, button { touch-action: manipulation; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
   ::selection {
     background: var(--color-accent);
     color: #0c0c0f;
@@ -70,12 +75,16 @@
     font-size: 0.9375rem;
     transition: transform 160ms var(--ease-out-quart), background-color 160ms, border-color 160ms, color 160ms;
   }
-  .btn:hover { transform: translateY(-1px); }
-  .btn:active { transform: translateY(1px) scale(0.98); }
+  /* feedback lands on press, instantly */
+  .btn:active { transform: scale(0.97); transition-duration: 80ms; }
   .btn-primary { background: var(--color-accent); color: #0c0c0f; }
-  .btn-primary:hover { background: var(--color-accent-soft); }
-  .btn-ghost { border: 1px solid var(--color-line); color: var(--color-ink); }
-  .btn-ghost:hover { border-color: var(--color-muted); }
+  .btn-ghost { border: 1px solid var(--color-line-strong); color: var(--color-ink); background: rgb(255 255 255 / 0.02); }
+  @media (hover: hover) {
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary:hover { background: var(--color-accent-soft); }
+    .btn-ghost:hover { border-color: var(--color-muted); background: rgb(255 255 255 / 0.05); }
+  }
 
   .link-draw {
     background-image: linear-gradient(currentColor, currentColor);
@@ -84,19 +93,26 @@
     background-repeat: no-repeat;
     transition: background-size 240ms var(--ease-out-quart);
   }
-  .link-draw:hover { background-size: 100% 1px; }
+  .link-draw:hover, .link-draw:focus-visible, .group:hover > .link-draw { background-size: 100% 1px; }
 
   .card {
     background: var(--color-surface);
     border: 1px solid var(--color-line);
     border-radius: 1rem;
+    /* a faint top highlight, like light catching the edge of the surface */
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
     transition: transform 200ms var(--ease-out-quart), border-color 200ms;
   }
-  a.card:hover { transform: translateY(-2px); border-color: #3a3a44; }
+  a.card:active { transform: scale(0.99); transition-duration: 80ms; }
 
   .photo-frame { overflow: hidden; }
   .photo-frame img { transition: transform 500ms var(--ease-out-quart); }
-  a:hover .photo-frame img { transform: scale(1.03); }
+  @media (hover: hover) {
+    a.card:hover { transform: translateY(-2px); border-color: var(--color-line-strong); }
+    a:hover .photo-frame img { transform: scale(1.03); }
+  }
+
+  .num { font-variant-numeric: tabular-nums; }
 
   .chip {
     font-family: var(--font-mono);
@@ -119,6 +135,10 @@
 .enter-2 { animation-delay: 180ms; }
 .enter-3 { animation-delay: 280ms; }
 .enter-4 { animation-delay: 380ms; }
+
+@media (prefers-reduced-transparency: reduce) {
+  .material { background: var(--color-bg) !important; backdrop-filter: none !important; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

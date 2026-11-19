@@ -5,11 +5,14 @@ export default function About() {
     <section id="about" className="border-t border-line py-24 md:py-32" aria-labelledby="about-title">
       <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
-          <div className="overflow-hidden rounded-2xl border border-line bg-surface">
+          <div className="overflow-hidden rounded-2xl border border-line bg-surface lg:sticky lg:top-24">
             <img
               src="/images/apple.jpg"
               alt="Jorge Marquez standing beside an Apple campus sign in Sunnyvale"
+              width={1200}
+              height={1600}
               loading="lazy"
+              decoding="async"
               className="aspect-[4/5] w-full object-cover"
             />
           </div>

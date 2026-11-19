@@ -9,11 +9,11 @@ function Card({ p, feature }: { p: Project; feature?: boolean }) {
     >
       {feature && p.image && (
         <div className="photo-frame relative aspect-[16/10] bg-surface-2">
-          <img src={p.image} alt={p.name} loading="lazy" className="absolute inset-0 size-full object-cover" />
+          <img src={p.image} alt={p.name} width={1400} height={875} loading="lazy" decoding="async" className="absolute inset-0 size-full object-cover" />
         </div>
       )}
       <div className={`flex flex-1 flex-col p-6 ${feature ? 'md:p-8' : ''}`}>
-        <p className="label">
+        <p className="label num">
           {p.kind}
           {p.dates ? ` · ${p.dates}` : ''}
         </p>
@@ -26,7 +26,7 @@ function Card({ p, feature }: { p: Project; feature?: boolean }) {
             </span>
           ))}
           {p.href && (
-            <span className="ml-auto text-sm text-ink transition-colors group-hover:text-accent">
+            <span className="ml-auto pl-2 text-sm whitespace-nowrap text-ink transition-colors group-hover:text-accent">
               View code <span aria-hidden>↗</span>
             </span>
           )}
@@ -59,7 +59,7 @@ export default function Projects() {
             <Card key={p.name} p={p} feature />
           ))}
         </div>
-        <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
           {rest.map((p) => (
             <Card key={p.name} p={p} />
           ))}

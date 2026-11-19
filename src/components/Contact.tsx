@@ -17,7 +17,7 @@ export default function Contact() {
       />
       <div className="wrap">
         <p className="label">Contact</p>
-        <h2 id="contact-title" className="mt-3 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-[-0.035em] text-balance md:text-7xl">
+        <h2 id="contact-title" className="mt-3 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-[-0.035em] md:text-6xl">
           Hiring for backend, systems or robotics? Let's talk.
         </h2>
         <a href={`mailto:${profile.email}`} className="btn btn-primary mt-10">
@@ -33,7 +33,7 @@ export default function Contact() {
                 className="group flex min-h-24 flex-col justify-center gap-1 py-6 sm:px-6 lg:first:pl-0"
               >
                 <span className="label">{c.label}</span>
-                <span className="truncate text-ink transition-colors group-hover:text-accent">{c.value}</span>
+                <span className="break-words text-ink transition-colors group-hover:text-accent">{c.value}</span>
               </a>
             </li>
           ))}

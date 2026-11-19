@@ -28,7 +28,7 @@ export default function CaseStudy() {
 
         <header className="mt-8 grid gap-10 border-b border-line pb-14 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <p className="label enter enter-1">
+            <p className="label num enter enter-1">
               {role.dates} · {role.place}
             </p>
             <h1 className="enter enter-2 mt-4 text-5xl font-semibold leading-[1.02] tracking-[-0.035em] md:text-7xl">{role.company}</h1>
@@ -36,7 +36,7 @@ export default function CaseStudy() {
             <p className="enter enter-4 mt-8 max-w-2xl text-lg leading-relaxed text-ink/85">{role.summary}</p>
           </div>
           <div className="enter enter-4 lg:col-span-4 lg:self-end lg:text-right">
-            <p className="text-6xl font-semibold tracking-[-0.04em] text-accent md:text-7xl">{role.metric.value}</p>
+            <p className="num text-6xl font-semibold tracking-[-0.04em] text-accent md:text-7xl">{role.metric.value}</p>
             <p className="mt-2 text-muted">{role.metric.label}</p>
           </div>
         </header>
@@ -92,7 +92,7 @@ export default function CaseStudy() {
 
         {role.image && (
           <div className="mt-14 overflow-hidden rounded-2xl border border-line">
-            <img src={role.image} alt={`Jorge Marquez at ${role.company}`} loading="lazy" className="aspect-[16/9] w-full object-cover" />
+            <img src={role.image} alt={`Jorge Marquez at ${role.company}`} width={1600} height={900} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
           </div>
         )}
 
