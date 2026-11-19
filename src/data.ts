@@ -49,16 +49,43 @@ export const roles: Role[] = [
     title: 'Software Engineering Intern',
     place: 'Austin, TX',
     dates: 'May 2025 – Aug 2025',
-    stack: ['C#', 'WPF', 'Multithreading', 'OS mutexes', 'Regression testing'],
+    stack: ['C#', 'WPF', 'Reflection', 'Multithreading', 'OS mutexes', 'Regression testing', 'Jira'],
     metric: { value: '40%', label: 'less debugging and triage time' },
     summary:
-      'Built an in-memory 4-way diff engine for RecNPlay, a C# WPF regression harness, so regressions isolate themselves.',
+      'Turned RecNPlay, an internal C# WPF record-and-replay harness, from a bare proof of concept into a regression tool: exact-pace replay, window-scoped capture, editable and shareable recordings, and a 4-way diff that isolates regressions.',
     bullets: [
-      'Enhanced RecNPlay, an internal C# WPF record-and-replay regression harness, with an in-memory 4-way differential detection engine that captures, compares and reconciles runtime and UI states across multi-threaded operations to isolate regressions automatically.',
-      'Implemented thread-safe synchronization across asynchronous pipelines with OS mutexes, eliminating intermittent race conditions during record and replay.',
+      'Built out nearly all of RecNPlay, an internal C# WPF record-and-replay regression harness. The proof of concept could only find UI controls and record and replay clicks on them; the rest of the feature set is mine.',
+      'Timestamped every interaction so a recording replays at exactly the pace the user worked, not as fast as the harness can click.',
+      'Added window finding so recording and reflection are locked to the right application window: input in other windows is never captured, and backend values come only from the app under test.',
+      'Built recording editing (adjust timestamps, delete actions) and save to file, so a recording can be sent to anyone and replayed on their machine.',
+      'Added a defect reproduction list generator that writes the steps for the QA report on the Jira ticket.',
+      'Engineered an in-memory 4-way differential detection engine that captures, compares and reconciles runtime and UI states across multi-threaded operations to isolate regressions automatically.',
+      'Synchronized the asynchronous record and replay pipelines with OS mutexes, eliminating intermittent race conditions.',
       'Built configuration management utilities that automate environment setup, cutting developer debugging and triage time by 40%.',
     ],
     lab: 'diff',
+    story: [
+      {
+        heading: 'Where RecNPlay started',
+        body: [
+          'When I picked it up, RecNPlay was a proof of concept. It could find UI components and record and play back clicks on them, and that was all. There was no sense of timing, no way to fix a recording, and nothing that told you whether a replay had passed.',
+          'Over the internship I built it into something QA could rely on. The work on these pages, from timing and window scoping to editing, sharing, reporting and the diff engine, is what I added.',
+        ],
+      },
+      {
+        heading: 'Recordings you can trust',
+        body: [
+          'Every action now carries a timestamp, so replays run at the pace the user actually worked. Window finding picks the correct window before anything is recorded and scopes reflection to it, so a stray click in another app or a value read from the wrong window never ends up in a recording.',
+          'Recordings became editable and portable: adjust a delay, delete a mistaken action, save the session to a file and send it to a teammate to replay. When a replay exposes a bug, RecNPlay writes the reproduction steps for the Jira ticket’s QA report.',
+        ],
+      },
+      {
+        heading: 'Letting the regression find itself',
+        body: [
+          'The last piece was telling people what went wrong. The 4-way diff engine compares runtime and UI state from the recording and the replay, and the pattern of disagreement points to the kind of bug. OS mutexes keep those captures consistent across threads. Try a simplified version below.',
+        ],
+      },
+    ],
   },
   {
     slug: 'apple',

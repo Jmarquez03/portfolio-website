@@ -42,22 +42,6 @@ export default function CaseStudy() {
           </div>
         </header>
 
-        {role.lab === 'diff' && (
-          <section className="border-b border-line py-14" aria-labelledby="lab-title">
-            <h2 id="lab-title" className="text-2xl font-semibold tracking-tight md:text-3xl">
-              Try it: let a 4-way diff isolate a regression
-            </h2>
-            <p className="mt-3 max-w-2xl text-muted">
-              A simplified simulation of the idea behind the engine. A recorded session is replayed on a new build, and runtime
-              and UI state are captured from both runs. Where the four states disagree tells you what kind of bug it is. Turn
-              the mutex off to see the race it prevents. No Oracle code or data is used here.
-            </p>
-            <div className="mt-8">
-              <DiffLab />
-            </div>
-          </section>
-        )}
-
         {role.lab === 'pointcloud' && (
           <section className="border-b border-line py-14" aria-labelledby="lab-title">
             <h2 id="lab-title" className="text-2xl font-semibold tracking-tight md:text-3xl">
@@ -106,6 +90,22 @@ export default function CaseStudy() {
             </div>
           </section>
         ))}
+
+        {role.lab === 'diff' && (
+          <section className="border-b border-line py-14" aria-labelledby="lab-title">
+            <h2 id="lab-title" className="text-2xl font-semibold tracking-tight md:text-3xl">
+              Try it: let a 4-way diff isolate a regression
+            </h2>
+            <p className="mt-3 max-w-2xl text-muted">
+              One of the features I built into RecNPlay, as a simplified simulation. A recorded session is replayed on a new
+              build, and runtime and UI state are captured from both runs. Where the four states disagree tells you what kind
+              of bug it is. Turn the mutex off to see the race it prevents. No Oracle code or data is used here.
+            </p>
+            <div className="mt-8">
+              <DiffLab />
+            </div>
+          </section>
+        )}
 
         {role.image && (
           <div className="mt-14 overflow-hidden rounded-2xl border border-line">
