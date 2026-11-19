@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0c0c0f;
+  --color-surface: #141418;
+  --color-surface-2: #1b1b21;
+  --color-line: #26262e;
+  --color-ink: #ededf0;
+  --color-muted: #9b9ba6;
+  --color-accent: #ff6b1a;
+  --color-accent-soft: #ff8a4c;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: #0c0c0f;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* One content width, equal edges everywhere */
+  .wrap {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .wrap { padding-inline: 2.5rem; }
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: transform 160ms var(--ease-out-quart), background-color 160ms, border-color 160ms, color 160ms;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(1px) scale(0.98); }
+  .btn-primary { background: var(--color-accent); color: #0c0c0f; }
+  .btn-primary:hover { background: var(--color-accent-soft); }
+  .btn-ghost { border: 1px solid var(--color-line); color: var(--color-ink); }
+  .btn-ghost:hover { border-color: var(--color-muted); }
+
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 240ms var(--ease-out-quart);
+  }
+  .link-draw:hover { background-size: 100% 1px; }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    transition: transform 200ms var(--ease-out-quart), border-color 200ms;
+  }
+  a.card:hover { transform: translateY(-2px); border-color: #3a3a44; }
+
+  .photo-frame { overflow: hidden; }
+  .photo-frame img { transition: transform 500ms var(--ease-out-quart); }
+  a:hover .photo-frame img { transform: scale(1.03); }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+}
+
+/* Hero entrance: plays once on load */
+@keyframes enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.enter { animation: enter 800ms var(--ease-out-quart) both; }
+.enter-1 { animation-delay: 80ms; }
+.enter-2 { animation-delay: 180ms; }
+.enter-3 { animation-delay: 280ms; }
+.enter-4 { animation-delay: 380ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
