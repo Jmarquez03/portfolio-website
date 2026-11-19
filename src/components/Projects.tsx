@@ -9,7 +9,11 @@ function Card({ p, feature }: { p: Project; feature?: boolean }) {
     >
       {feature && p.image && (
         <div className="photo-frame relative aspect-[16/10] bg-surface-2">
-          <img src={p.image} alt={p.name} width={1400} height={875} loading="lazy" decoding="async" className="absolute inset-0 size-full object-cover" />
+          <img src={p.image} alt={p.name} width={1400} height={875} loading="lazy"
+            decoding="async"
+            className="absolute inset-0 size-full object-cover"
+            style={p.imagePosition ? { objectPosition: p.imagePosition } : undefined}
+          />
         </div>
       )}
       <div className={`flex flex-1 flex-col p-6 ${feature ? 'md:p-8' : ''}`}>

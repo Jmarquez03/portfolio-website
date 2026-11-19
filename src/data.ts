@@ -141,9 +141,22 @@ export type Project = {
   stack: string[]
   href?: string
   image?: string
+  /** CSS object-position for the featured photo crop */
+  imagePosition?: string
 }
 
 export const projects: Project[] = [
+  {
+    name: 'Autonomous drone and rover search',
+    kind: 'IEEE robotics · Software lead',
+    dates: 'Oct 2022 – Mar 2023',
+    blurb:
+      'A drone and ground rover that hunt for QR-coded targets together. A YOLOv3 model I trained on 1,000+ box images runs on a Jetson Nano to spot boxes, and the drone closes in using distance estimates to scan each code with OpenCV. On a match, reverse vectorization drives the rover to the drone, which touches down and lifts off before the rover enters the box for the next target.',
+    stack: ['Python', 'OpenCV', 'YOLOv3', 'Jetson Nano'],
+    href: 'https://github.com/Jmarquez03/JetsonNanoCode',
+    image: '/images/r5-robot.jpg',
+    imagePosition: 'center 30%',
+  },
   {
     name: 'Autonomous Navigation Platform',
     kind: 'Robotics · Software lead',
@@ -152,7 +165,6 @@ export const projects: Project[] = [
       'Real-time control software running closed-loop algorithms at 100 Hz on spatial sensor telemetry, with a binary serialization protocol that streams telemetry at sub-millisecond overhead.',
     stack: ['C++', 'Python', 'Sensor fusion', 'Concurrency'],
     href: 'https://github.com/Jmarquez03/RobotMovementCode',
-    image: '/images/r5-robot.jpg',
   },
   {
     name: 'zLyrics',
@@ -196,14 +208,6 @@ export const projects: Project[] = [
       'An ASP.NET web app with a C# and SQL backend built around the student advising process.',
     stack: ['C#', 'ASP.NET', 'SQL'],
     href: 'https://github.com/Jmarquez03/AdvisingAssistant',
-  },
-  {
-    name: 'Autonomous drone and rover search',
-    kind: 'IEEE robotics · First robotics project',
-    blurb:
-      'A drone and ground rover that hunt for QR-coded targets together. A YOLOv3 model I trained on 1,000+ box images runs on a Jetson Nano to spot boxes, and the drone closes in using distance estimates to scan each code with OpenCV. On a match, reverse vectorization drives the rover to the drone, which touches down and lifts off before the rover enters the box for the next target.',
-    stack: ['Python', 'OpenCV', 'YOLOv3', 'Jetson Nano'],
-    href: 'https://github.com/Jmarquez03/JetsonNanoCode',
   },
 ]
 
