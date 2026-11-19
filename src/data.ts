@@ -169,6 +169,14 @@ export const projects: Project[] = [
     imagePosition: 'center 15%',
   },
   {
+    name: 'Autonomous firefighting robot',
+    kind: 'IEEE robotics · Engineering lead',
+    dates: 'Oct 2024 – Feb 2025',
+    blurb:
+      'A mobile robot that finds and fights fires in unmapped arenas. I led its perception, state estimation and path planning: ROS 2 and Nav2 fuse 2D LiDAR, wheel odometry and an IMU for real-time SLAM and obstacle avoidance, while my microcontroller drivers close the motor loop for precise trajectories and fast target alignment.',
+    stack: ['ROS 2', 'Nav2', 'LiDAR SLAM', 'Embedded'],
+  },
+  {
     name: 'zLyrics',
     kind: 'Full-stack web app · Co-developer',
     dates: '2026',
