@@ -48,8 +48,8 @@ export default function CaseStudy() {
               Try it: filter and cluster a scan
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
-              A simplified, synthetic version of the kind of processing I built: remove the noise, then let clustering find the
-              objects. No Apple data is used here.
+              A simplified, synthetic version of the processing I built for scans distorted by layered glass: remove the noise,
+              then let clustering find the objects. No Apple data is used here.
             </p>
             <div className="mt-8">
               <PointCloudLab />

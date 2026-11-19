@@ -114,13 +114,15 @@ export const roles: Role[] = [
     title: 'Software Systems Engineering Intern',
     place: 'Sunnyvale, CA',
     dates: 'May 2024 – Aug 2024',
-    stack: ['Python', 'C++', 'Open3D', 'DBSCAN', 'K-D trees', 'Streaming pipelines'],
+    stack: ['Python', 'Open3D', 'DBSCAN', 'K-D trees', 'C++', 'Robot control APIs'],
     metric: { value: '80%', label: 'smaller point-cloud payloads' },
     summary:
-      'Built point-cloud filtering and clustering pipelines for sensor telemetry in the Vision Products Group.',
+      'Cleaned and segmented noisy optical scans of multi-layer glass components in Python, then built the C++ control API for the robots that capture the data.',
     bullets: [
+      'Designed a Python and Open3D noise-removal algorithm for optical point clouds distorted by layered glass, cutting point counts and downstream compute by 80%.',
+      'Clustered the cleaned clouds with DBSCAN and K-D trees so each part could be handled as an isolated object for ray tracing.',
       'Built ingestion and filtering pipelines for streaming sensor telemetry, cutting processing latency by more than 50%.',
-      'Automated spatial clustering and vector operations in Python, reducing payload size and downstream compute by 80%.',
+      'Was put in charge of the robotic data-capture control systems and wrote a C++ API that developers script in Python.',
       'Wrote validation harnesses that catch ingestion drift and schema regressions before release cycles.',
     ],
     image: '/images/apple.jpg',
@@ -129,14 +131,14 @@ export const roles: Role[] = [
       {
         heading: 'Point clouds',
         body: [
-          'In the Vision Products Group I worked as a systems tools intern, writing software that tests hardware. Most of it centered on point clouds: millions of 3D samples from sensors, many of them noise.',
-          'Using Python, C++ and Open3D I designed a noise-removal algorithm that cut point counts by 80%, which shrank data files and sped up everything downstream. I then implemented clustering with DBSCAN and K-D trees to split each cloud into distinct objects, a foundation for later control-systems work.',
+          'In the Vision Products Group I worked as a systems tools intern, writing software that tests hardware. The process starts with a scanner that uses light to build a point cloud of an object: millions of 3D samples. The part being scanned was made of several layers of glass, which left the resulting clouds full of distortion and noise.',
+          'My job was to clean them up and separate what was left into distinct objects. Working only in Python with Open3D, I designed a noise-removal algorithm that cut point counts by 80%, shrinking data files and speeding up everything downstream. I then clustered the remaining points with DBSCAN and K-D trees, so each piece could be treated as its own object. Those isolated objects went on to ray tracing, which another team owned.',
         ],
       },
       {
         heading: 'Control systems',
         body: [
-          'I also automated the control systems behind data collection. I wrote APIs that wrapped the system controls so future applications could integrate without manual steps, which made data capture more accurate and consistent and easier to scale across projects.',
+          'I was then put in charge of the control systems: the robots that perform the data capture. I automated them by writing an API in C++ that wraps the system controls, which developers can drive from Python scripts. Future applications could integrate without manual steps, which made data capture more accurate and consistent and easier to scale across projects.',
         ],
       },
     ],
