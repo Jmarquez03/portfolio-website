@@ -161,6 +161,7 @@ export const projects: Project[] = [
     blurb:
       'Lyric videos and music metadata from asynchronous REST APIs, kept fast with client-side caching and error handling. When the API has no lyrics, OpenAI Whisper transcribes the track with timestamps.',
     stack: ['TypeScript', 'React', 'REST APIs', 'OpenAI Whisper'],
+    href: 'https://github.com/Zavalaesteban1/zLyrcis',
   },
   {
     name: 'Robotics curriculum with computer vision',
