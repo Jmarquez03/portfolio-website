@@ -156,11 +156,11 @@ export const projects: Project[] = [
   },
   {
     name: 'zLyrics',
-    kind: 'Full-stack web app',
+    kind: 'Full-stack web app · Co-developer',
     dates: '2026',
     blurb:
-      'A production React app serving real-time data from asynchronous REST APIs in under 150 ms, kept responsive with client-side caching, debounced requests and memoized state.',
-    stack: ['TypeScript', 'React', 'REST APIs'],
+      'Lyric videos and music metadata from asynchronous REST APIs, kept fast with client-side caching and error handling. When the API has no lyrics, OpenAI Whisper transcribes the track with timestamps.',
+    stack: ['TypeScript', 'React', 'REST APIs', 'OpenAI Whisper'],
   },
   {
     name: 'Robotics curriculum with computer vision',
