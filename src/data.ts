@@ -21,8 +21,8 @@ export type Role = {
   /** Long-form case study sections, shown on /work/:slug */
   story?: { heading: string; body: string[] }[]
   image?: string
-  /** Shows the interactive point-cloud lab on the case study page */
-  lab?: boolean
+  /** Interactive demo on the case study page */
+  lab?: 'pointcloud' | 'diff'
 }
 
 export const roles: Role[] = [
@@ -49,15 +49,16 @@ export const roles: Role[] = [
     title: 'Software Engineering Intern',
     place: 'Austin, TX',
     dates: 'May 2025 – Aug 2025',
-    stack: ['C++', 'Multithreading', 'State validation', 'Regression testing'],
-    metric: { value: '40%', label: 'less compute overhead' },
+    stack: ['C#', 'WPF', 'Multithreading', 'OS mutexes', 'Regression testing'],
+    metric: { value: '40%', label: 'less debugging and triage time' },
     summary:
-      'Wrote an in-memory 4-way differential engine in C++ that cross-validates distributed data snapshots in real time.',
+      'Built an in-memory 4-way diff engine for RecNPlay, a C# WPF regression harness, so regressions isolate themselves.',
     bullets: [
-      'Developed a high-performance in-memory 4-way differential engine in C++ to cross-validate distributed data snapshots in real time.',
-      'Tuned memory footprints and thread synchronization primitives for a 40% reduction in compute overhead.',
-      'Authored automated regression suites that guarantee deterministic data fidelity across high-scale distributed deployments.',
+      'Enhanced RecNPlay, an internal C# WPF record-and-replay regression harness, with an in-memory 4-way differential detection engine that captures, compares and reconciles runtime and UI states across multi-threaded operations to isolate regressions automatically.',
+      'Implemented thread-safe synchronization across asynchronous pipelines with OS mutexes, eliminating intermittent race conditions during record and replay.',
+      'Built configuration management utilities that automate environment setup, cutting developer debugging and triage time by 40%.',
     ],
+    lab: 'diff',
   },
   {
     slug: 'apple',
@@ -75,7 +76,7 @@ export const roles: Role[] = [
       'Wrote validation harnesses that catch ingestion drift and schema regressions before release cycles.',
     ],
     image: '/images/apple.jpg',
-    lab: true,
+    lab: 'pointcloud',
     story: [
       {
         heading: 'Point clouds',

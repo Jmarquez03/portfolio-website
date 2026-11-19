@@ -27,7 +27,7 @@ export default function About() {
             <p>
               I got into engineering through robots: sensors, control loops and three runs at the IEEE Region 5 robotics
               competition. Following a problem all the way down to the hardware stuck with me, from sensor pipelines at Apple to
-              C++ snapshot validation at Oracle.
+              C# regression tooling at Oracle.
             </p>
             <p>
               At UTRGV I served as IEEE student branch president from 2022 to 2026, teaching workshops on full-stack development,
