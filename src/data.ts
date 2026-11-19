@@ -147,35 +147,39 @@ export const roles: Role[] = [
     company: 'InvoiceCloud',
     title: 'Software Engineering Intern',
     place: 'Remote',
-    dates: 'May 2023 – Aug 2023',
-    stack: ['C#', 'VB.NET', 'ASP.NET', 'SAML 2.0', 'Okta', 'SQL'],
-    metric: { value: '3+ days', label: 'saved per payment export' },
+    dates: 'May 2023 – Dec 2023',
+    stack: ['VB.NET', 'C#', 'ASP.NET Web Forms', 'SQL stored procedures', 'SAML 2.0', 'Okta'],
+    metric: { value: '5 min', label: 'turnaround on requests that used to take days' },
     summary:
-      'Shipped self-service internal tools and Okta SSO for an enterprise cloud billing platform.',
+      'Built self-service CRM tools that cut payment-export and IP-allowlist requests from days to five minutes, and replaced IT-issued CRM passwords with Okta single sign-on.',
     bullets: [
-      'Built automated onboarding and configuration workflows for an enterprise cloud billing app, cutting setup from days to minutes.',
-      'Integrated SAML 2.0 single sign-on and role-based access control, hardening enterprise authentication.',
-      'Wrote integration tests and optimized relational SQL queries to protect transactional data consistency.',
+      'Built a Payment Export Tool in the CRM so Client Services can generate payment exports themselves, replacing development-team tickets that took days with a five-minute task.',
+      'Shipped it on deadline after a mid-project move from ASP.NET Core and AngularJS to a .NET Framework 4.8 Web Forms app in VB.NET, with stored procedures guiding reps to the right batch and Excel exports sent by email.',
+      'Moved the reCAPTCHA IP allowlist from an engineer-edited text file into a database with a CRM page for Client Services, with validation, duplicate checks and confirmed deletes. Turnaround went from days to minutes.',
+      'Replaced IT-generated CRM passwords with SAML 2.0 single sign-on through Okta, so users sign in with the Okta account they already have instead of waiting on IT for resets.',
+      'Added an environment-aware sign-in flow: redirect to Okta in production, an Okta button on test servers, none on local builds.',
     ],
     image: '/images/invoicecloud.jpg',
     story: [
       {
         heading: 'Payment export tool',
         body: [
-          'When a payment cleared after its batch had settled, billers sometimes saw a paid customer as unpaid. Fixing that meant an engineer pulling an export file by hand for Client Services.',
-          'We built a page in the internal app that let Client Services send and download those files themselves. Halfway through, the project had to move from ASP.NET Core and AngularJS to a .NET Framework 4.8 Web Forms app in VB.NET, with the same deadline. We kept the logic, rebuilt the front end from a new Figma mockup, used stored procedures to guide reps to the right batch, and emailed Excel exports through the company mail service. It shipped to production and turned a three-day process into an instant one for hundreds of reps.',
+          'When a payment cleared after its batch had settled, billers sometimes saw a paid customer as unpaid. Fixing that took a payment export, and the only way to get one was to send a ticket to the development team, who pulled the data from the database by hand. Turnaround took days.',
+          'We built a tool in the CRM that let Client Services generate and download those exports themselves. Halfway through, the project had to move from ASP.NET Core and AngularJS to a .NET Framework 4.8 Web Forms app in VB.NET, with the same deadline. We kept the logic, rebuilt the front end from a new Figma mockup, used stored procedures to guide reps to the right batch, and emailed Excel exports through the company mail service. It shipped to production, and a request that used to take days now takes about five minutes.',
         ],
       },
       {
         heading: 'reCAPTCHA IP allowlist',
         body: [
-          "Billers' support staff kept getting stuck in reCAPTCHA loops, and the allowlist that exempted them was a text file only engineers could edit. With two other engineers I moved it into a database with full CRUD and built a Web Forms page for Client Services: a table with the date and time each IP was added, an add and edit dialog with regex and duplicate checks, and delete with confirmation.",
+          "Billers' support staff kept getting stuck in reCAPTCHA loops. The allowlist that exempted them was a text file only engineers could edit, so every new IP meant a ticket to the development team and days of waiting.",
+          'With two other engineers I moved the allowlist into a database with full CRUD and built a page in the CRM for Client Services: a table with the date and time each IP was added, an add and edit dialog with regex and duplicate checks, and delete with confirmation. Now support enters the IP address themselves, and it takes about five minutes.',
         ],
       },
       {
         heading: 'CRM single sign-on with Okta',
         body: [
-          'CRM passwords were random strings nobody could remember, generating more than ten reset tickets a week. My partner and I added SAML 2.0 SSO through Okta to a .NET Framework 4.8 Web Forms app using Sustainsys.Saml2, whose documentation was thin enough that we mapped the assertion handling by working through the library ourselves.',
+          'CRM passwords were random strings generated by the IT department. Anyone who forgot theirs had to ask IT for a new one, which meant more than ten reset tickets a week and long waits to get back in. It was not safe either: people saved the passwords in notepads and on sticky notes.',
+          'My partner and I added SAML 2.0 SSO through Okta to a .NET Framework 4.8 Web Forms app using Sustainsys.Saml2, whose documentation was thin enough that we mapped the assertion handling by working through the library ourselves. Users now sign in to the CRM with the Okta account they already have.',
           'The proof of concept logged into the CRM through Okta within a week. We then added a service-provider-initiated flow for the production and test URLs, and a pipeline variable that switches behavior per environment: redirect to Okta in production, an Okta button on test servers, none on local builds.',
         ],
       },
