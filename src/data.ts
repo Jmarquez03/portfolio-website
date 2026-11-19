@@ -147,24 +147,26 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: 'Autonomous drone and rover search',
-    kind: 'IEEE robotics · Software lead',
-    dates: 'Oct 2022 – Mar 2023',
-    blurb:
-      'A drone and ground rover that hunt for QR-coded targets together. A YOLOv3 model I trained on 1,000+ box images runs on a Jetson Nano to spot boxes, and the drone closes in using distance estimates to scan each code with OpenCV. On a match, reverse vectorization drives the rover to the drone, which touches down and lifts off before the rover enters the box for the next target.',
-    stack: ['Python', 'OpenCV', 'YOLOv3', 'Jetson Nano'],
-    href: 'https://github.com/Jmarquez03/JetsonNanoCode',
-    image: '/images/r5-robot.jpg',
-    imagePosition: 'center 30%',
-  },
-  {
     name: 'Autonomous Navigation Platform',
     kind: 'Robotics · Software lead',
     dates: '2023 – 2024',
     blurb:
-      'Real-time control software running closed-loop algorithms at 100 Hz on spatial sensor telemetry, with a binary serialization protocol that streams telemetry at sub-millisecond overhead.',
-    stack: ['C++', 'Python', 'Sensor fusion', 'Concurrency'],
+      'Embedded firmware for an autonomous ground rover on an ESP32 and Raspberry Pi. A BNO055 IMU drives closed-loop drift correction, ultrasonic sensors avoid obstacles and place the robot in the arena, and OpenCV color detection finds each target, sending alignment over UART. The same alignment docks it on an inductor coil for wireless charging.',
+    stack: ['C++', 'Python', 'ESP32', 'Raspberry Pi', 'OpenCV'],
     href: 'https://github.com/Jmarquez03/RobotMovementCode',
+    image: '/images/autonav-rover.jpg',
+    imagePosition: 'center 85%',
+  },
+  {
+    name: 'Autonomous drone and rover search',
+    kind: 'IEEE robotics · Software lead',
+    dates: 'Oct 2022 – Mar 2023',
+    blurb:
+      'A drone and ground rover that hunt QR-coded targets together. A YOLOv3 model I trained on 1,000+ box images runs on a Jetson Nano to spot boxes; the drone closes in on distance estimates and scans each code with OpenCV, then reverse vectorization brings the rover to it after a touch-and-go.',
+    stack: ['Python', 'OpenCV', 'YOLOv3', 'Jetson Nano'],
+    href: 'https://github.com/Jmarquez03/JetsonNanoCode',
+    image: '/images/r5-robot.jpg',
+    imagePosition: 'center 15%',
   },
   {
     name: 'zLyrics',

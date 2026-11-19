@@ -1,25 +1,36 @@
 import { profile, projects, type Project } from '../data'
 
-function Card({ p, feature }: { p: Project; feature?: boolean }) {
+/** `wide`: an odd featured card out, laid out side by side on tablets so the 2-column grid has no gap */
+function Card({ p, feature, wide }: { p: Project; feature?: boolean; wide?: boolean }) {
   const Tag = p.href ? 'a' : 'div'
   return (
     <Tag
       {...(p.href ? { href: p.href, target: '_blank', rel: 'noreferrer' } : {})}
-      className="card group flex h-full flex-col overflow-hidden"
+      className={`card group flex h-full flex-col overflow-hidden ${wide ? 'md:flex-row lg:flex-col' : ''}`}
     >
       {feature && p.image && (
-        <div className="photo-frame relative aspect-[16/10] bg-surface-2">
-          <img src={p.image} alt={p.name} width={1400} height={875} loading="lazy"
+        <div className={`photo-frame relative aspect-square shrink-0 bg-surface-2 ${wide ? 'md:w-1/2 lg:w-auto' : ''}`}>
+          <img
+            src={p.image}
+            alt={p.name}
+            width={1200}
+            height={1200}
+            loading="lazy"
             decoding="async"
             className="absolute inset-0 size-full object-cover"
             style={p.imagePosition ? { objectPosition: p.imagePosition } : undefined}
           />
         </div>
       )}
-      <div className={`flex flex-1 flex-col p-6 ${feature ? 'md:p-8' : ''}`}>
+      <div className={`flex flex-1 flex-col p-6 ${feature ? 'md:p-7' : ''}`}>
         <p className="label num">
           {p.kind}
-          {p.dates ? ` · ${p.dates}` : ''}
+          {p.dates && (
+            <>
+              {' · '}
+              <span className="whitespace-nowrap">{p.dates}</span>
+            </>
+          )}
         </p>
         <h3 className={`mt-3 font-semibold tracking-tight ${feature ? 'text-2xl' : 'text-xl'}`}>{p.name}</h3>
         <p className="mt-3 flex-1 leading-relaxed text-muted">{p.blurb}</p>
@@ -58,10 +69,15 @@ export default function Projects() {
           </a>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
-          {featured.map((p) => (
-            <Card key={p.name} p={p} feature />
-          ))}
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {featured.map((p, i) => {
+            const wide = i === featured.length - 1 && featured.length % 2 === 1
+            return (
+              <div key={p.name} className={wide ? 'md:col-span-2 lg:col-span-1' : undefined}>
+                <Card p={p} feature wide={wide} />
+              </div>
+            )
+          })}
         </div>
         <div className="mt-5 grid gap-5 md:grid-cols-2">
           {rest.map((p, i) => (
