@@ -60,8 +60,11 @@ export default function Projects() {
           ))}
         </div>
         <div className="mt-5 grid gap-5 md:grid-cols-2">
-          {rest.map((p) => (
-            <Card key={p.name} p={p} />
+          {rest.map((p, i) => (
+            // an odd card out spans the full row instead of leaving a gap
+            <div key={p.name} className={i === rest.length - 1 && rest.length % 2 ? 'md:col-span-2' : undefined}>
+              <Card p={p} />
+            </div>
           ))}
         </div>
       </div>

@@ -164,6 +164,15 @@ export const projects: Project[] = [
     href: 'https://github.com/Zavalaesteban1/zLyrcis',
   },
   {
+    name: 'Dead Last',
+    kind: 'Game · 3D roguelike shooter',
+    dates: '2026',
+    blurb:
+      'An isometric twin-stick roguelike in Unity 6. I built the core loop, projectile physics and inventory, NavMesh enemy AI that tracks, flanks and scales hordes, and an event-driven HUD with live reticles, health and ammo.',
+    stack: ['Unity 6', 'C#', 'NavMesh AI', 'UGUI'],
+    href: 'https://github.com/Jmarquez03/Dead-Last',
+  },
+  {
     name: 'Robotics curriculum with computer vision',
     kind: 'TEXPREP · Teaching',
     blurb:
