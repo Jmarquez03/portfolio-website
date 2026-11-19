@@ -136,6 +136,49 @@
 .enter-3 { animation-delay: 280ms; }
 .enter-4 { animation-delay: 380ms; }
 
+
+/* Mobile hero rover: drives the hero's bottom line, scans, turns, drives back */
+.rover-track { container-type: inline-size; height: 72px; }
+.rover { width: 112px; animation: rover-drive 16s cubic-bezier(0.45, 0, 0.55, 1) infinite both; }
+.rover-face { animation: rover-face 16s cubic-bezier(0.45, 0, 0.55, 1) infinite both; }
+.rover-wheel { transform-box: fill-box; transform-origin: center; animation: rover-wheel 16s cubic-bezier(0.45, 0, 0.55, 1) infinite both; }
+.rover-head { transform-box: fill-box; transform-origin: 30% 100%; animation: rover-head 16s ease-in-out infinite both; }
+.rover-body { animation: rover-bob 0.32s ease-in-out infinite alternate; }
+.rover-led { animation: rover-led 1.6s steps(1) infinite; }
+.rover-beam { animation: rover-beam 1.8s ease-in-out infinite; }
+
+@keyframes rover-drive {
+  0%, 4% { transform: translateX(0); }
+  40%, 52% { transform: translateX(calc(100cqw - 100%)); }
+  88%, 100% { transform: translateX(0); }
+}
+@keyframes rover-face {
+  0%, 45% { transform: scaleX(1); }
+  49%, 95% { transform: scaleX(-1); }
+  99%, 100% { transform: scaleX(1); }
+}
+@keyframes rover-wheel {
+  0%, 4% { transform: rotate(0deg); }
+  40%, 52% { transform: rotate(1080deg); }
+  88%, 100% { transform: rotate(2160deg); }
+}
+@keyframes rover-head {
+  0%, 40% { transform: rotate(0deg); }
+  42% { transform: rotate(-8deg); }
+  44% { transform: rotate(6deg); }
+  46%, 88% { transform: rotate(0deg); }
+  90% { transform: rotate(-8deg); }
+  92% { transform: rotate(6deg); }
+  94%, 100% { transform: rotate(0deg); }
+}
+@keyframes rover-bob { to { transform: translateY(-0.6px); } }
+@keyframes rover-led { 50% { opacity: 0.25; } }
+@keyframes rover-beam { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rover, .rover-face, .rover-wheel, .rover-head, .rover-body, .rover-led, .rover-beam { animation: none !important; }
+}
+
 @media (prefers-reduced-transparency: reduce) {
   .material { background: var(--color-bg) !important; backdrop-filter: none !important; }
 }

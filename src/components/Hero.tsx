@@ -1,7 +1,22 @@
-import { Component, lazy, Suspense, useRef, type ReactNode } from 'react'
+import { Component, lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import { profile } from '../data'
+import Rover from './Rover'
 
 const PointCloud = lazy(() => import('./PointCloud'))
+
+const DESKTOP = '(min-width: 1024px)'
+
+/** Only desktop loads the three.js scan; smaller screens get the rover */
+function useDesktop() {
+  const [desktop, setDesktop] = useState(() => window.matchMedia(DESKTOP).matches)
+  useEffect(() => {
+    const mq = window.matchMedia(DESKTOP)
+    const on = () => setDesktop(mq.matches)
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [])
+  return desktop
+}
 
 /** If WebGL is unavailable the hero keeps its still glow instead of breaking */
 class GLBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
@@ -16,29 +31,32 @@ class GLBoundary extends Component<{ children: ReactNode }, { failed: boolean }>
 
 export default function Hero() {
   const section = useRef<HTMLElement>(null)
+  const desktop = useDesktop()
 
   return (
-    <section ref={section} className="relative isolate flex min-h-svh flex-col overflow-hidden" aria-labelledby="hero-title">
+    <section ref={section} className="relative isolate flex min-h-[calc(100svh-16px)] flex-col overflow-hidden lg:min-h-svh" aria-labelledby="hero-title">
       {/* still fallback / backdrop glow */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            'radial-gradient(60% 55% at 72% 45%, rgba(255,107,26,0.12), transparent 70%), radial-gradient(40% 40% at 20% 90%, rgba(255,107,26,0.05), transparent 70%)',
+            desktop
+              ? 'radial-gradient(60% 55% at 72% 45%, rgba(255,107,26,0.12), transparent 70%), radial-gradient(40% 40% at 20% 90%, rgba(255,107,26,0.05), transparent 70%)'
+              : 'radial-gradient(90% 45% at 80% 0%, rgba(255,107,26,0.10), transparent 70%), radial-gradient(70% 30% at 50% 100%, rgba(255,107,26,0.10), transparent 70%)',
         }}
       />
-      <div className="absolute inset-0 -z-10">
-        <GLBoundary>
-          <Suspense fallback={null}>
-            <PointCloud mode="hero" eventSource={section} />
-          </Suspense>
-        </GLBoundary>
-      </div>
-      {/* keeps text readable where it overlaps the scan on smaller screens */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-2/3 bg-gradient-to-t from-bg via-bg/80 to-transparent lg:hidden" />
+      {desktop && (
+        <div className="absolute inset-0 -z-10">
+          <GLBoundary>
+            <Suspense fallback={null}>
+              <PointCloud mode="hero" eventSource={section} />
+            </Suspense>
+          </GLBoundary>
+        </div>
+      )}
 
-      <div className="wrap pointer-events-none flex flex-1 flex-col justify-end pb-14 pt-28 lg:justify-center lg:pb-20">
+      <div className="wrap pointer-events-none flex flex-1 flex-col justify-center pb-10 pt-28 lg:pb-20">
         <div className="max-w-[40rem]">
           <p className="label enter enter-1 flex items-center gap-2">
             <span className="relative flex size-2">
@@ -67,6 +85,12 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {!desktop && (
+        <div className="wrap">
+          <Rover />
+        </div>
+      )}
 
       <div className="wrap pointer-events-none hidden pb-8 lg:block">
         <p className="label text-right">Point-cloud scan: raw → filtered → clustered. Move your cursor through it.</p>
