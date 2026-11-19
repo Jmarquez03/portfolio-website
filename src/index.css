@@ -179,6 +179,47 @@
   .rover, .rover-face, .rover-wheel, .rover-head, .rover-body, .rover-led, .rover-beam { animation: none !important; }
 }
 
+/* Mobile hero drone: patrols the top, drops in over the rover while it scans (same 16 s clock) */
+.drone-sky { container-type: size; }
+.drone-x { width: 72px; animation: drone-x 16s ease-in-out infinite both; }
+.drone-y { animation: drone-y 16s ease-in-out infinite both; }
+.drone-hover { animation: drone-hover 1.7s ease-in-out infinite alternate; }
+.drone-tilt { transform-origin: 50% 40%; animation: drone-tilt 16s ease-in-out infinite both; }
+.drone-blade { transform-box: fill-box; transform-origin: center; animation: drone-blade 0.09s linear infinite alternate; }
+.drone-led { animation: rover-led 1.2s steps(1) infinite; }
+.drone-led-alt { animation-delay: -0.6s; }
+
+@keyframes drone-x {
+  0% { transform: translateX(calc(100cqw - 100%)); }
+  18% { transform: translateX(0); }
+  32%, 54% { transform: translateX(calc(100cqw - 92px)); }
+  72% { transform: translateX(30cqw); }
+  100% { transform: translateX(calc(100cqw - 100%)); }
+}
+@keyframes drone-y {
+  0% { transform: translateY(0); }
+  10% { transform: translateY(10px); }
+  22%, 32% { transform: translateY(0); }
+  42%, 52% { transform: translateY(calc(100cqh - 44px)); }
+  62% { transform: translateY(0); }
+  82% { transform: translateY(12px); }
+  100% { transform: translateY(0); }
+}
+@keyframes drone-tilt {
+  0%, 18%, 32%, 54%, 72%, 100% { transform: rotate(0deg); }
+  4%, 15% { transform: rotate(-7deg); }
+  21%, 29% { transform: rotate(7deg); }
+  58%, 68% { transform: rotate(-6deg); }
+  76%, 96% { transform: rotate(6deg); }
+}
+@keyframes drone-hover { from { transform: translateY(-2px); } to { transform: translateY(2px); } }
+@keyframes drone-blade { from { transform: scaleX(1); } to { transform: scaleX(0.15); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .drone-x, .drone-y, .drone-hover, .drone-tilt, .drone-blade, .drone-led { animation: none !important; }
+  .drone-x { transform: translateX(calc(100cqw - 100%)); }
+}
+
 @media (prefers-reduced-transparency: reduce) {
   .material { background: var(--color-bg) !important; backdrop-filter: none !important; }
 }

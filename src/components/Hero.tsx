@@ -1,6 +1,7 @@
 import { Component, lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import { profile } from '../data'
 import Rover from './Rover'
+import Drone from './Drone'
 
 const PointCloud = lazy(() => import('./PointCloud'))
 
@@ -46,6 +47,7 @@ export default function Hero() {
               : 'radial-gradient(90% 45% at 80% 0%, rgba(255,107,26,0.10), transparent 70%), radial-gradient(70% 30% at 50% 100%, rgba(255,107,26,0.10), transparent 70%)',
         }}
       />
+      {!desktop && <Drone />}
       {desktop && (
         <div className="absolute inset-0 -z-10">
           <GLBoundary>
