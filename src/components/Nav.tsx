@@ -40,7 +40,9 @@ export default function Nav() {
       </a>
       <nav className="wrap flex h-16 items-center justify-between" aria-label="Main">
         <Link to="/" className="flex min-h-11 items-center gap-2.5 font-semibold tracking-tight">
-          <span className="grid size-7 place-items-center rounded-md bg-accent font-mono text-xs font-medium text-bg">JM</span>
+          <span className="logo-stage grid h-7 w-10 place-items-center" aria-hidden>
+            <img src="/images/logo.png" alt="" width={402} height={274} className="logo-spin h-7 w-auto" />
+          </span>
           <span translate="no">{profile.name}</span>
         </Link>
 

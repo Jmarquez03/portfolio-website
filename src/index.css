@@ -232,3 +232,22 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Nav logo: a slow turn around its vertical axis */
+.logo-stage {
+  perspective: 240px;
+}
+.logo-spin {
+  animation: logo-spin 9s linear infinite;
+  will-change: transform;
+}
+@keyframes logo-spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-spin {
+    animation: none;
+  }
+}
