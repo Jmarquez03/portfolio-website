@@ -13,7 +13,7 @@ export default function Experience() {
             </h2>
           </div>
           <p className="max-w-sm text-muted">
-            Four roles across backend infrastructure, sensor data and enterprise identity. Open any role for the full story.
+            Four roles across restaurant systems, test tooling, sensor data and enterprise identity. Open any role for the full story.
           </p>
         </div>
 

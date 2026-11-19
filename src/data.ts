@@ -32,15 +32,36 @@ export const roles: Role[] = [
     title: 'Software Engineer',
     place: 'Austin, TX',
     dates: 'Jun 2026 – Sep 2026',
-    stack: ['Python', 'C#', 'Distributed systems', 'Event telemetry', 'Microservices'],
-    metric: { value: '35%', label: 'fewer inter-service request drops' },
+    stack: ['Kitchen Display System', 'POS integration', 'Offline resilience', 'Code review', 'End-to-end testing'],
+    metric: { value: 'Offline', label: 'orders keep reaching the kitchen in an outage' },
     summary:
-      'Built distributed backend services and asynchronous event pipelines for high-volume transactional data.',
+      'Kept restaurant kitchens cooking through internet outages in Oracle’s Food and Beverage unit, and fixed data-integrity defects in order processing.',
     bullets: [
-      'Engineered distributed backend services and asynchronous event pipelines processing high-volume transactional data.',
-      'Architected deterministic state-recovery services that reconcile edge operational nodes across network partitions, eliminating data loss.',
-      'Isolated network socket routing bottlenecks and added automated health telemetry, cutting inter-service request drops by 35%.',
-      'Built automated diagnostic workflows with AI tools (Cursor, Copilot, LLM APIs) to speed up defect isolation and telemetry inspection.',
+      'Engineered architectural changes that keep the Kitchen Display System (KDS) controller working offline, so orders flow from the point of sale to the kitchen with no internet connection.',
+      'Resolved a deep-seated logic defect that sent duplicate modifier data payloads with orders.',
+      'Ran rigorous peer code reviews to keep the enterprise codebase healthy.',
+      'Worked closely with QA to build end-to-end test cycles for these fixes.',
+    ],
+    story: [
+      {
+        heading: 'The kitchen went dark with the internet',
+        body: [
+          'I worked in Oracle’s Food and Beverage Global Industries Unit (FBGIU), which builds the systems restaurants run on. When the network dropped, the Kitchen Display System crashed. The KDS controller depended on an internet connection it should never have needed, so the kitchen stopped receiving orders and could not cook them until the connection came back.',
+        ],
+      },
+      {
+        heading: 'Taking the internet out of the loop',
+        body: [
+          'I traced the crash to updates the controller made that required the internet and were not needed to run the kitchen. Removing them let the KDS controller keep talking to the point-of-sale system during an outage.',
+          'Now ordering, cooking and serving carry on uninterrupted when the internet goes down, which is exactly when a busy restaurant can least afford to stop.',
+        ],
+      },
+      {
+        heading: 'Data integrity and code health',
+        body: [
+          'I also fixed a logic defect that duplicated modifier data, the add-ons and changes attached to an item, in order payloads. Alongside the fixes, I reviewed teammates’ code and worked with QA to build end-to-end test cycles that keep these failures from coming back.',
+        ],
+      },
     ],
   },
   {

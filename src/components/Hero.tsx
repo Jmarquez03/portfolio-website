@@ -71,7 +71,7 @@ export default function Hero() {
             Software engineer for distributed systems and real-time data.
           </h1>
           <p className="enter enter-3 mt-6 max-w-[34rem] text-lg leading-relaxed text-muted text-pretty">
-            I'm Jorge Marquez. I've built event pipelines at Oracle, point-cloud tooling at Apple and SSO at InvoiceCloud, and I lead
+            I'm Jorge Marquez. I've kept restaurant kitchens running offline at Oracle, built point-cloud tooling at Apple and SSO at InvoiceCloud, and I lead
             robotics software on the side. BS in Computer Science, UTRGV, 2026.
           </p>
           <div className="enter enter-4 pointer-events-auto mt-9 flex flex-col gap-3 sm:flex-row">
