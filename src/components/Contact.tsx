@@ -26,11 +26,14 @@ export default function Contact() {
 
         <ul className="mt-16 grid border-t border-line sm:grid-cols-2 lg:grid-cols-[1.7fr_1fr_1fr_1fr]">
           {channels.map((c) => (
-            <li key={c.label} className="border-b border-line sm:odd:border-r lg:border-r lg:last:border-r-0">
+            <li
+              key={c.label}
+              className="border-b border-line sm:odd:border-r sm:even:pl-6 lg:border-r lg:pl-6 lg:first:pl-0 lg:last:border-r-0"
+            >
               <a
                 href={c.href}
                 {...(c.href.startsWith('http') || c.href.endsWith('.pdf') ? { target: '_blank', rel: 'noreferrer' } : {})}
-                className="group flex min-h-24 flex-col justify-center gap-1 py-6 sm:px-6 lg:first:pl-0"
+                className="group flex min-h-24 flex-col justify-center gap-1 py-6 pr-6"
               >
                 <span className="label">{c.label}</span>
                 <span className="break-words text-ink transition-colors group-hover:text-accent">{c.value}</span>
