@@ -123,7 +123,6 @@ export const roles: Role[] = [
       'Clustered the cleaned clouds with DBSCAN and K-D trees so each part could be handled as an isolated object for ray tracing.',
       'Built ingestion and filtering pipelines for streaming sensor telemetry, cutting processing latency by more than 50%.',
       'Was put in charge of the robotic data-capture control systems and wrote a C++ API that developers script in Python.',
-      'Wrote validation harnesses that catch ingestion drift and schema regressions before release cycles.',
     ],
     image: '/images/apple.jpg',
     lab: 'pointcloud',
