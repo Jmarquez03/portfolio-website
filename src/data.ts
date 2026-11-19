@@ -190,20 +190,20 @@ export const projects: Project[] = [
     href: 'https://github.com/Jmarquez03/Dreem',
   },
   {
-    name: 'Edge AI on Jetson Nano',
-    kind: 'IEEE robotics',
-    blurb:
-      'On-device machine learning on an NVIDIA Jetson Nano, written in Python with TensorFlow Lite during my IEEE robotics work.',
-    stack: ['Python', 'TensorFlow Lite', 'Jetson'],
-    href: 'https://github.com/Jmarquez03/JetsonNanoCode',
-  },
-  {
     name: 'Advising Assistant',
     kind: 'Web app',
     blurb:
       'An ASP.NET web app with a C# and SQL backend built around the student advising process.',
     stack: ['C#', 'ASP.NET', 'SQL'],
     href: 'https://github.com/Jmarquez03/AdvisingAssistant',
+  },
+  {
+    name: 'Autonomous drone and rover search',
+    kind: 'IEEE robotics · First robotics project',
+    blurb:
+      'A drone and ground rover that hunt for QR-coded targets together. A YOLOv3 model I trained on 1,000+ box images runs on a Jetson Nano to spot boxes, and the drone closes in using distance estimates to scan each code with OpenCV. On a match, reverse vectorization drives the rover to the drone, which touches down and lifts off before the rover enters the box for the next target.',
+    stack: ['Python', 'OpenCV', 'YOLOv3', 'Jetson Nano'],
+    href: 'https://github.com/Jmarquez03/JetsonNanoCode',
   },
 ]
 
