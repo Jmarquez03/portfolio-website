@@ -147,6 +147,16 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: 'Autonomous firefighting robot',
+    kind: 'IEEE robotics · Engineering lead',
+    dates: 'Oct 2024 – Feb 2025',
+    blurb:
+      'A mobile robot that finds and fights fires in unmapped arenas. I led its perception, state estimation and path planning: ROS 2 and Nav2 fuse 2D LiDAR, wheel odometry and an IMU for real-time SLAM and obstacle avoidance, while my microcontroller drivers close the motor loop for precise trajectories and fast target alignment.',
+    stack: ['ROS 2', 'Nav2', 'LiDAR SLAM', 'Embedded'],
+    image: '/images/firefighter-slam.jpg',
+    imagePosition: '100% center',
+  },
+  {
     name: 'Autonomous Navigation Platform',
     kind: 'Robotics · Software lead',
     dates: '2023 – 2024',
@@ -167,14 +177,6 @@ export const projects: Project[] = [
     href: 'https://github.com/Jmarquez03/JetsonNanoCode',
     image: '/images/r5-robot.jpg',
     imagePosition: 'center 15%',
-  },
-  {
-    name: 'Autonomous firefighting robot',
-    kind: 'IEEE robotics · Engineering lead',
-    dates: 'Oct 2024 – Feb 2025',
-    blurb:
-      'A mobile robot that finds and fights fires in unmapped arenas. I led its perception, state estimation and path planning: ROS 2 and Nav2 fuse 2D LiDAR, wheel odometry and an IMU for real-time SLAM and obstacle avoidance, while my microcontroller drivers close the motor loop for precise trajectories and fast target alignment.',
-    stack: ['ROS 2', 'Nav2', 'LiDAR SLAM', 'Embedded'],
   },
   {
     name: 'zLyrics',
