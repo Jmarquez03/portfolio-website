@@ -40,6 +40,8 @@ export type Role = {
   image?: string
   /** CSS object-position for the case study photo crop */
   imagePosition?: string
+  /** Taller frame for portrait photos (CSS aspect-ratio), 16 / 9 by default */
+  imageAspect?: string
   /** Interactive demo on the case study page */
   lab?: 'pointcloud' | 'diff'
 }
@@ -146,6 +148,9 @@ export const roles: Role[] = [
       'Was put in charge of the robotic data-capture control systems and wrote a C++ API that developers script in Python.',
     ],
     image: '/images/apple.jpg',
+    // the sign is taller than a 16:9 slice of this portrait photo
+    imageAspect: '4 / 3',
+    imagePosition: 'center 92%',
     lab: 'pointcloud',
     story: [
       {
