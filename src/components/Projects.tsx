@@ -2,11 +2,13 @@ import { profile, projects, type Project } from '../data'
 
 /** Featured cards are full-width rows on tablet and up: square photo left, story right */
 function Card({ p, feature }: { p: Project; feature?: boolean }) {
-  const Tag = p.href ? 'a' : 'div'
+  // with two destinations the card can't be one link: the code link stretches over the card, the live link sits above it
+  const multi = Boolean(p.href && p.live)
+  const Tag = p.href && !multi ? 'a' : 'div'
   return (
     <Tag
-      {...(p.href ? { href: p.href, target: '_blank', rel: 'noreferrer' } : {})}
-      className={`card group flex h-full flex-col overflow-hidden ${feature ? 'md:flex-row' : ''}`}
+      {...(p.href && !multi ? { href: p.href, target: '_blank', rel: 'noreferrer' } : {})}
+      className={`card group flex h-full flex-col overflow-hidden ${multi ? 'card-multi relative' : ''} ${feature ? 'md:flex-row' : ''}`}
     >
       {feature && p.image && (
         <div className="photo-frame relative aspect-square shrink-0 bg-surface-2 md:w-[42%] lg:w-[23rem]">
@@ -40,10 +42,26 @@ function Card({ p, feature }: { p: Project; feature?: boolean }) {
               {s}
             </span>
           ))}
-          {p.href && (
-            <span className="ml-auto pl-2 text-sm whitespace-nowrap text-ink transition-colors group-hover:text-accent">
-              View code <span aria-hidden>↗</span>
+          {multi ? (
+            <span className="ml-auto flex gap-4 pl-2 text-sm whitespace-nowrap">
+              <a href={p.live} target="_blank" rel="noreferrer" className="relative z-10 text-ink transition-colors hover:text-accent">
+                Live site <span aria-hidden>↗</span>
+              </a>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-ink transition-colors after:absolute after:inset-0 after:rounded-2xl after:content-[''] hover:text-accent"
+              >
+                View code <span aria-hidden>↗</span>
+              </a>
             </span>
+          ) : (
+            p.href && (
+              <span className="ml-auto pl-2 text-sm whitespace-nowrap text-ink transition-colors group-hover:text-accent">
+                View code <span aria-hidden>↗</span>
+              </span>
+            )
           )}
         </div>
       </div>

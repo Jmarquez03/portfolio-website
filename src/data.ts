@@ -194,6 +194,8 @@ export type Project = {
   blurb: string
   stack: string[]
   href?: string
+  /** Deployed site, shown next to the code link */
+  live?: string
   image?: string
   /** CSS object-position for the featured photo crop */
   imagePosition?: string
@@ -213,7 +215,7 @@ export const projects: Project[] = [
   {
     name: 'Autonomous Navigation Platform',
     kind: 'Robotics · Software lead',
-    dates: '2023 – 2024',
+    dates: 'Oct 2023 – Feb 2024',
     blurb:
       'Embedded firmware for an autonomous ground rover on an ESP32 and Raspberry Pi. A BNO055 IMU drives closed-loop drift correction, ultrasonic sensors avoid obstacles and place the robot in the arena, and OpenCV color detection finds each target, sending alignment over UART. The same alignment docks it on an inductor coil for wireless charging.',
     stack: ['C++', 'Python', 'ESP32', 'Raspberry Pi', 'OpenCV'],
@@ -240,6 +242,7 @@ export const projects: Project[] = [
       'Lyric videos and music metadata from asynchronous REST APIs, kept fast with client-side caching and error handling. When the API has no lyrics, OpenAI Whisper transcribes the track with timestamps.',
     stack: ['TypeScript', 'React', 'REST APIs', 'OpenAI Whisper'],
     href: 'https://github.com/Zavalaesteban1/zLyrcis',
+    live: 'https://z-lyrcis.vercel.app/login',
   },
   {
     name: 'Dead Last',
