@@ -109,7 +109,7 @@ export default function CaseStudy() {
 
         {role.image && (
           <div className="mt-14 overflow-hidden rounded-2xl border border-line">
-            <img src={role.image} alt={`Jorge Marquez at ${role.company}`} width={1600} height={900} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
+            <img src={role.image} alt={`Jorge Marquez at ${role.company}`} width={1600} height={900} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" style={role.imagePosition ? { objectPosition: role.imagePosition } : undefined} />
           </div>
         )}
 

@@ -38,6 +38,8 @@ export type Role = {
   /** Long-form case study sections, shown on /work/:slug */
   story?: { heading: string; body: string[] }[]
   image?: string
+  /** CSS object-position for the case study photo crop */
+  imagePosition?: string
   /** Interactive demo on the case study page */
   lab?: 'pointcloud' | 'diff'
 }
@@ -102,6 +104,8 @@ export const roles: Role[] = [
       'Built configuration management utilities that automate environment setup, cutting developer debugging and triage time by 40%.',
     ],
     lab: 'diff',
+    image: '/images/oracle-intern.jpg',
+    imagePosition: 'center 72%',
     story: [
       {
         heading: 'Where RecNPlay started',
@@ -177,6 +181,7 @@ export const roles: Role[] = [
       'Added an environment-aware sign-in flow: redirect to Okta in production, an Okta button on test servers, none on local builds.',
     ],
     image: '/images/invoicecloud.jpg',
+    imagePosition: 'center 100%',
     story: [
       {
         heading: 'Payment export tool',
