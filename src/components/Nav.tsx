@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { profile } from '../data'
+import { useResumeChooser } from './Resume'
 
 const links = [
   { href: '/#work', label: 'Work' },
@@ -11,6 +12,7 @@ const links = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const openResume = useResumeChooser()
   const [scrolled, setScrolled] = useState(false)
   const { pathname, hash } = useLocation()
 
@@ -55,10 +57,9 @@ export default function Nav() {
             </li>
           ))}
           <li className="ml-3">
-            <a href={profile.resume} target="_blank" rel="noreferrer" className="btn btn-ghost !min-h-9 !px-4 text-sm"
-              aria-label="Resume (PDF, opens in a new tab)">
+            <button type="button" onClick={openResume} aria-haspopup="dialog" className="btn btn-ghost !min-h-9 !px-4 text-sm">
               Resume
-            </a>
+            </button>
           </li>
         </ul>
 
@@ -88,9 +89,17 @@ export default function Nav() {
               </li>
             ))}
             <li className="pt-6">
-              <a href={profile.resume} target="_blank" rel="noreferrer" className="btn btn-primary w-full">
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                onClick={() => {
+                  setOpen(false)
+                  openResume()
+                }}
+                className="btn btn-primary w-full"
+              >
                 Download resume
-              </a>
+              </button>
             </li>
           </ul>
         </div>

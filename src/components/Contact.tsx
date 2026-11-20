@@ -1,10 +1,9 @@
-import { profile } from '../data'
+import { profile, resumes } from '../data'
 
 const channels = [
   { label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
   { label: 'LinkedIn', value: 'jorge-marquez-jm2025', href: profile.linkedin },
   { label: 'GitHub', value: 'Jmarquez03', href: profile.github },
-  { label: 'Resume', value: 'PDF, 1 page', href: profile.resume },
 ]
 
 export default function Contact() {
@@ -24,7 +23,7 @@ export default function Contact() {
           Email me
         </a>
 
-        <ul className="mt-16 grid border-t border-line sm:grid-cols-2 lg:grid-cols-[1.7fr_1fr_1fr_1fr]">
+        <ul className="mt-16 grid border-t border-line sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
           {channels.map((c) => (
             <li
               key={c.label}
@@ -40,6 +39,23 @@ export default function Contact() {
               </a>
             </li>
           ))}
+          <li className="border-b border-line sm:pl-6 lg:pl-6">
+            <div className="flex min-h-24 flex-col justify-center gap-1 py-6 pr-6">
+              <span className="label">Resume</span>
+              {resumes.map((r) => (
+                <a
+                  key={r.id}
+                  href={r.href}
+                  download={r.filename}
+                  className="group inline-flex min-h-8 items-center gap-1.5 self-start whitespace-nowrap text-ink transition-colors hover:text-accent"
+                >
+                  {r.id === 'swe' ? 'Software engineering' : 'Robotics and embedded'}
+                  <span aria-hidden className="text-muted transition-colors group-hover:text-accent">↓</span>
+                  <span className="sr-only">(PDF download)</span>
+                </a>
+              ))}
+            </div>
+          </li>
         </ul>
       </div>
     </section>

@@ -5,8 +5,25 @@ export const profile = {
   email: 'jmarquez@marquezengineering.com',
   linkedin: 'https://www.linkedin.com/in/jorge-marquez-jm2025/',
   github: 'https://github.com/Jmarquez03',
-  resume: '/files/Jorge_Marquez_Resume.pdf',
 }
+
+/** Two tailored resumes; every resume link opens a chooser */
+export const resumes = [
+  {
+    id: 'swe',
+    title: 'Software Engineering',
+    blurb: 'Backend, systems and full-stack roles',
+    href: '/files/Jorge_Marquez_Resume_Software_Engineering.pdf',
+    filename: 'Jorge Marquez Resume Software Engineering.pdf',
+  },
+  {
+    id: 'robotics',
+    title: 'Embedded Systems and Robotics',
+    blurb: 'Robotics, autonomy and embedded firmware roles',
+    href: '/files/Jorge_Marquez_Resume_Robotics.pdf',
+    filename: 'Jorge Marquez Resume Robotics.pdf',
+  },
+]
 
 export type Role = {
   slug: string

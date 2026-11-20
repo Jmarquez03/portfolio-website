@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import CaseStudy from './pages/CaseStudy'
 import NotFound from './pages/NotFound'
+import { ResumeProvider } from './components/Resume'
 
 /** Scroll to #hash targets after navigation, or to the top on a new page */
 function ScrollManager() {
@@ -24,7 +25,7 @@ function ScrollManager() {
 
 export default function App() {
   return (
-    <>
+    <ResumeProvider>
       <ScrollManager />
       <Nav />
       <main id="main">
@@ -42,6 +43,6 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-    </>
+    </ResumeProvider>
   )
 }

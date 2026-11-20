@@ -251,3 +251,32 @@
     animation: none;
   }
 }
+
+/* Resume chooser */
+.resume-dialog::backdrop {
+  background: rgb(5 5 7 / 0.7);
+  backdrop-filter: blur(6px);
+}
+.resume-dialog[open] {
+  animation: dialog-in 220ms var(--ease-out-quart);
+}
+.resume-dialog[open]::backdrop {
+  animation: backdrop-in 220ms ease-out;
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resume-dialog[open],
+  .resume-dialog[open]::backdrop {
+    animation: none;
+  }
+}

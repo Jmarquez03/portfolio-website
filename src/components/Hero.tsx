@@ -1,3 +1,4 @@
+import { useResumeChooser } from './Resume'
 import { Component, lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import { profile } from '../data'
 import Rover from './Rover'
@@ -31,6 +32,7 @@ class GLBoundary extends Component<{ children: ReactNode }, { failed: boolean }>
 }
 
 export default function Hero() {
+  const openResume = useResumeChooser()
   const section = useRef<HTMLElement>(null)
   const desktop = useDesktop()
 
@@ -81,9 +83,9 @@ export default function Hero() {
                 <path d="M8 3v10m0 0l-4-4m4 4l4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-            <a href={profile.resume} target="_blank" rel="noreferrer" className="btn btn-ghost">
+            <button type="button" onClick={openResume} aria-haspopup="dialog" className="btn btn-ghost">
               Download resume
-            </a>
+            </button>
           </div>
         </div>
       </div>
