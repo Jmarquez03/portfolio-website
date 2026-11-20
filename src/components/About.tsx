@@ -7,10 +7,10 @@ export default function About() {
         <div className="lg:col-span-5">
           <div className="overflow-hidden rounded-2xl border border-line bg-surface lg:sticky lg:top-24">
             <img
-              src="/images/apple.jpg"
-              alt="Jorge Marquez standing beside an Apple campus sign in Sunnyvale"
-              width={1200}
-              height={1600}
+              src="/images/utrgv.jpg"
+              alt="Jorge Marquez on a giant inflatable UTRGV chair at a campus event"
+              width={1394}
+              height={1599}
               loading="lazy"
               decoding="async"
               className="aspect-[4/5] w-full object-cover"
@@ -30,7 +30,7 @@ export default function About() {
               kitchen systems that keep working offline at Oracle.
             </p>
             <p>
-              At UTRGV I served as IEEE student branch president from 2022 to 2026, teaching workshops on full-stack development,
+              At UTRGV I served as IEEE student branch president from 2022 to 2025, teaching workshops on full-stack development,
               Git and algorithms. Active membership grew <span className="font-medium text-ink">500%</span> over that time.
             </p>
           </div>
